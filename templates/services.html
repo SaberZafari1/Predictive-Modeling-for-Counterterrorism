@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Prediction</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer with Icons</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <style>
+    .white-text {
+      color: white;
+    }
+    .grey-text.text-lighten-4 {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+  .blur-text {
+    filter: blur(5px); /* Adjust the blur level as needed */
+  }
+  </style>
+  <!-- Include Materialize CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+</head>
+
+<body>
+  <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <!--  <a href="#" class="brand-logo"> <img src="../static/images/log1.png" alt="Roshnayi"></a> -->
+       </a>
+         <ul class="right hide-on-med-and-down">
+          <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('services')}}">Prediction</a></li>
+                    <li><a href="#">Visualization</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+        </ul>
+        <ul id="nav-mobile" class="sidenav">
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('services')}}">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+   </div>
+  </nav> 
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 light">Predicting Terrorist Attack's Targets
+        <br>
+        </h5>
+      </div>
+
+      <div class="row">
+        <form  id="predictionForm" class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="iyear"><b>Year</b></label>
+              <br>
+              <input placeholder="Year" name="iyear" id="iyear" type="text" class="validate">
+            </div>
+            <div class="input-field col s6">
+              <label for="crit3"><b>Criterion: OUTSIDE INTERNATIONAL HUMANITARIAN LAW</b></label>
+              <br>
+              <p>
+                
+                <br>1 = "Yes" The incident meets criterion.
+                <br>0 = "No" The incident does not meet criterion.
+              </p>
+              <select id="crit3" name="crit3" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="doubtterr"><b>Doubt terrorism Proper?</b></label>
+              <br>
+              <p>
+                
+                <br>1 = "Yes" There is doubt as to whether the incident is an act of terrorism.
+                <br>0 = "No" There is essentially no doubt as to whether the incident is an act of terrorism.
+              </p>
+              <select id="doubtterr" name="doubtterr" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+              </select>
+            </div>
+            <div class="input-field col s6">
+              <label for="success"><b>Success</b></label>
+              <br>
+              <p>
+               
+                <br>1 = "Yes" The incident was successful.
+                <br>0 = "No" The incident was not successful.
+              </p>
+              <select id="success" name="success" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="attacktype1"  style="margin-bottom: 10px;"><b>Attack Type</b></label>
+              <br>
+              <select id="attacktype1" name="attacktype1" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">1 - Assassination</option>
+                <option value="2">2 - Armed Assault</option>
+                <option value="3">3 - Bombing/Explosion</option>
+                <option value="4">4 - Hijacking</option>
+                <option value="5">5 - Hostage Taking (Barricade Incident)</option>
+                <option value="6">6 - Hostage Taking (Kidnapping)</option>
+                <option value="7">7 - Facility/Infrastructure Attack</option>
+                <option value="8">8 - Unarmed Assault</option>
+                <option value="9">9 - Unknown</option>
+              </select>
+           </div>
+              <div class="input-field col s6">
+                <label for="targsubtype1"><b>Victim</b></label>
+                <br>
+                <select id="targsubtype1" name="targsubtype1" class="browser-default">
+                  <option value="" disabled selected>Choose your option</option>
+                  <option value="1">1 - Gas/Oil/Electric</option>
+                  <option value="2">2 - Restaurant/Bar/Café</option>
+                  <option value="3">3 - Bank/Commerce</option>
+                  <option value="4">4 - Multinational Corporation</option>
+                  <option value="5">5 - Industrial/Textiles/Factory</option>
+                  <option value="6">6 - Medical/Pharmaceutical</option>
+                  <option value="7">7 - Retail/Grocery/Bakery (including cell phone shops and generic shops)</option>
+                  <option value="8">8 - Hotel/Resort</option>
+                  <option value="9">9 - Farm/Ranch</option>
+                  <option value="10">10 - Mining</option>
+                  <option value="11">11 - Entertainment/Cultural/Stadium/Casino</option>
+                  <option value="12">12 - Construction</option>
+                  <option value="13">13 - Private Security Company/Firm</option>
+                  <option value="14">14 - Judges/Attorneys/Courts</option>
+                  <option value="15">15 - Politician or Political Party Movement/Meeting/Rally</option>
+                  <option value="16">16 - Royalty</option>
+                  <option value="17">17 - Head of State</option>
+                  <option value="18">18 - Government Personnel (excluding police, military)</option>
+                  <option value="19">19 - Election-related</option>
+                  <option value="20">20 - Intelligence</option>
+                  <option value="21">21 - Government Buildings/Facility/Office</option>
+                  <option value="22">22 - Police Buildings (Headquarters/Stations/School)</option>
+                  <option value="23">23 - Police Patrol (including vehicles and convoys)</option>
+                  <option value="24">24 - Police Checkpoint</option>
+                  <option value="25">25 - Police Security Forces/Officers</option>
+                  <option value="26">26 - Prison/Jail</option>
+                  <option value="27">27 - Military Barracks/Base/Headquarters/Checkpost</option>
+                  <option value="28">28 - Military Recruiting Station/Academy</option>
+                  <option value="29">29 - Military Unit/Patrol/Convoy</option>
+                  <option value="30">30 - Military Weaponry</option>
+                  <option value="31">31 - Military Aircraft</option>
+                  <option value="32">32 - Military Maritime</option>
+                  <option value="33">33 - Non-combatant Personnel</option>
+                  <option value="34">34 - Military Personnel (soldiers, troops, officers, forces)</option>
+                  <option value="35">35 - Military Transportation/Vehicle (excluding convoys)</option>
+                  <option value="36">36 - Military Checkpoint</option>
+                  <option value="37">37 - North Atlantic Treaty Organization (NATO) Related</option>
+                  <option value="39">39 - Paramilitary</option>
+                  <option value="40">40 - Clinics</option>
+                  <option value="41">41 - Personnel</option>
+                  <option value="42">42 - Aircraft (not at an airport)</option>
+                  <option value="43">43 - Airline Officer/Personnel</option>
+                  <option value="44">44 - Airport</option>
+                  <option value="45">45 - Diplomatic Personnel (outside of embassy, consulate)</option>
+                  <option value="46">46 - Embassy/Consulate</option>
+                  <option value="47">47 - International Organization (peacekeeper, aid agency, compound)</option>
+                  <option value="48">48 - Teacher/Professor/Instructor</option>
+                  <option value="49">49 - School/University/Educational Building</option>
+                  <option value="50">50 - Other Personnel</option>
+                  <option value="51">51 - Food Supply</option>
+                  <option value="52">52 - Water Supply</option>
+                  <option value="53">53 - Newspaper Journalist/Staff/Facility</option>
+                  <option value="54">54 - Radio Journalist/Staff/Facility</option>
+                  <option value="55">55 - Television Journalist/Staff/Facility</option>
+                  <option value="56">56 - Other (including online news agencies)</option>
+                  <option value="57">57 - Civilian Maritime</option>
+                  <option value="58">58 - Commercial Maritime</option>
+                  <option value="59">59 - Oil Tanker</option>
+                  <option value="60">60 - Port</option>
+                  <option value="61">61 - Domestic NGO</option>
+                  <option value="62">62 - International NGO</option>
+                  <option value="63">63 - Ambulance</option>
+                  <option value="64">64 - Fire Fighter/Truck</option>
+                  <option value="65">65 - Refugee (including Camps/IDP/Asylum Seekers)</option>
+                  <option value="66">66 - Demilitarized Zone (including Green Zone)</option>
+                  <option value="67">67 - Unnamed Civilian/Unspecified</option>
+                  <option value="68">68 - Named Civilian</option>
+                  <option value="69">69 - Religion Identified</option>
+                  <option value="70">70 - Student</option>
+                  <option value="71">71 - Race/Ethnicity Identified</option>
+                  <option value="72">72 - Farmer</option>
+                  <option value="73">73 - Vehicles/Transportation</option>
+                  <option value="74">74 - Marketplace/Plaza/Square</option>
+                  <option value="75">75 - Village/City/Town/Suburb</option>
+                  <option value="76">76 - House/Apartment/Residence</option>
+                  <option value="77">77 - Laborer (General)/Occupation Identified</option>
+                  <option value="78">78 - Procession/Gathering (funeral, wedding, birthday, religious)</option>
+                  <option value="79">79 - Public Areas (e.g., Public garden, parking lot, garage, beach, public buildings, camps)</option>
+                  <option value="80">80 - Memorial/Cemetery/Monument</option>
+                  <option value="81">81 - Museum/Cultural Center/Cultural House</option>
+                  <option value="82">82 - Labor Union Related</option>
+                  <option value="83">83 - Protester</option>
+                  <option value="84">84 - Political Party Member/Rally</option>
+                  <option value="85">85 - Religious Figure</option>
+                  <option value="86">86 - Place of Worship</option>
+                  <option value="87">87 - Affiliated Institution</option>
+                  <option value="88">88 - Radio</option>
+                  <option value="89">89 - Television</option>
+                  <option value="90">90 - Telephone/Telegraph</option>
+                  <option value="91">91 - Internet Infrastructure</option>
+                  <option value="92">92 - Multiple Telecommunication Targets</option>
+                  <option value="93">93 - Terrorist Organization</option>
+                  <option value="94">94 - Non-State Militia</option>
+                  <option value="95">95 - Tourism Travel Agency</option>
+                  <option value="96">96 - Tour Bus/Van/Vehicle</option>
+                  <option value="97">97 - Tourist</option>
+                  <option value="98">98 - Other Facility</option>
+                  <option value="99">99 - Bus (excluding tourist)</option>
+                  <option value="100">100 - Train/Train Tracks/ Trolley</option>
+                  <option value="101">101 - Bus Station/Stop</option>
+                  <option value="102">102 - Subway</option>
+                  <option value="103">103 - Bridge/Car Tunnel</option>
+                  <option value="104">104 - Highway/Road/Toll/Traffic Signal</option>
+                  <option value="105">105 - Taxi/Rickshaw</option>
+                  <option value="106">106 - Gas</option>
+                  <option value="107">107 - Electricity</option>
+                  <option value="108">108 - Oil</option>
+                  <option value="109">109 - Party Official/Candidate/Other Personnel</option>
+                  <option value="110">110 - Party Office/Facility</option>
+                  <option value="111">111 - Rally</option>
+                  <option value="112">112 - Legal Services</option>
+                  <option value="113">113 - Alleged Informant</option>
+
+                </select>
+              </div>
+            </div>
+    
+
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="natlty1"><b>Nationality</b></label>
+              <br>
+              <select id="natlty1" name="natlty1" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="4">4 - Afghanistan</option>
+                <option value="5">5 - Albania</option>
+                <option value="6">6 - Algeria</option>
+                <option value="7">7 - Andorra</option>
+                <option value="8">8 - Angola</option>
+                <option value="10">10 - Antigua and Barbuda</option>
+                <option value="11">11 - Argentina</option>
+                <option value="12">12 - Armenia</option>
+                <option value="14">14 - Australia</option>
+                <option value="15">15 - Austria</option>
+                <option value="16">16 - Azerbaijan</option>
+                <option value="17">17 - Bahamas</option>
+                <option value="18">18 - Bahrain</option>
+                <option value="19">19 - Bangladesh</option>
+                <option value="20">20 - Barbados</option>
+                <option value="21">21 - Belgium</option>
+                <option value="22">22 - Belize</option>
+                <option value="23">23 - Benin</option>
+                <option value="24">24 - Bermuda*</option>
+                <option value="25">25 - Bhutan</option>
+                <option value="26">26 - Bolivia</option>
+                <option value="28">28 - Bosnia-Herzegovina</option>
+                <option value="29">29 - Botswana</option>
+                <option value="30">30 - Brazil</option>
+                <option value="31">31 - Brunei</option>
+                <option value="32">32 - Bulgaria</option>
+                <option value="33">33 - Burkina Faso</option>
+                <option value="34">34 - Burundi</option>
+                <option value="35">35 - Belarus</option>
+                <option value="36">36 - Cambodia</option>
+                <option value="37">37 - Cameroon</option>
+                <option value="38">38 - Canada</option>
+                <option value="41">41 - Central African Republic</option>
+                <option value="42">42 - Chad</option>
+                <option value="43">43 - Chile</option>
+                <option value="44">44 - China</option>
+                <option value="45">45 - Colombia</option>
+                <option value="46">46 - Comoros</option>
+                <option value="47">47 - Republic of the Congo</option>
+                <option value="49">49 - Costa Rica</option>
+                <option value="50">50 - Croatia</option>
+                <option value="51">51 - Cuba</option>
+                <option value="53">53 - Cyprus</option>
+                <option value="54">54 - Czech Republic</option>
+                <option value="55">55 - Denmark</option>
+                <option value="56">56 - Djibouti</option>
+                <option value="57">57 - Dominica</option>
+                <option value="58">58 - Dominican Republic</option>
+                <option value="59">59 - Ecuador</option>
+                <option value="60">60 - Egypt</option>
+                <option value="61">61 - El Salvador</option>
+                <option value="62">62 - Equatorial Guinea</option>
+                <option value="63">63 - Eritrea</option>
+                <option value="64">64 - Estonia</option>
+                <option value="65">65 - Ethiopia</option>
+                <option value="66">66 - Falkland Islands</option>
+                <option value="67">67 - Fiji</option>
+                <option value="68">68 - Finland</option>
+                <option value="69">69 - France</option>
+                <option value="70">70 - French Guiana</option>
+                <option value="71">71 - French Polynesia</option>
+                <option value="72">72 - Gabon</option>
+                <option value="73">73 - Gambia</option>
+                <option value="74">74 - Georgia</option>
+                <option value="75">75 - Germany</option>
+                <option value="76">76 - Ghana</option>
+                <option value="78">78 - Greece</option>
+                <option value="79">79 - Greenland</option>
+                <option value="80">80 - Grenada</option>
+                <option value="81">81 - Guadeloupe</option>
+                <option value="83">83 - Guatemala</option>
+                <option value="84">84 - Guinea</option>
+                <option value="85">85 - Guinea-Bissau</option>
+                <option value="86">86 - Guyana</option>
+                <option value="87">87 - Haiti</option>
+                <option value="88">88 - Honduras</option>
+                <option value="89">89 - Hong Kong</option>
+                <option value="90">90 - Hungary</option>
+                <option value="91">91 - Iceland</option>
+                <option value="92">92 - India</option>
+                <option value="93">93 - Indonesia</option>
+                <option value="94">94 - Iran</option>
+                <option value="95">95 - Iraq</option>
+                <option value="96">96 - Ireland</option>
+                <option value="97">97 - Israel</option>
+                <option value="98">98 - Italy</option>
+                <option value="99">99 - Ivory Coast</option>
+                <option value="100">100 - Jamaica</option>
+                <option value="101">101 - Japan</option>
+                <option value="102">102 - Jordan</option>
+                <option value="103">103 - Kazakhstan</option>
+                <option value="104">104 - Kenya</option>
+                <option value="106">106 - Kuwait</option>
+                <option value="107">107 - Kyrgyzstan</option>
+                <option value="108">108 - Laos</option>
+                <option value="109">109 - Latvia</option>
+                <option value="110">110 - Lebanon</option>
+                <option value="111">111 - Lesotho</option>
+                <option value="112">112 - Liberia</option>
+                <option value="113">113 - Libya</option>
+                <option value="114">114 - Liechtenstein</option>
+                <option value="115">115 - Lithuania</option>
+                <option value="116">116 - Luxembourg</option>
+                <option value="117">117 - Macau</option>
+                <option value="118">118 - Macedonia</option>
+                <option value="119">119 - Madagascar</option>
+                <option value="120">120 - Malawi</option>
+                <option value="121">121 - Malaysia</option>
+                <option value="122">122 - Maldives</option>
+                <option value="123">123 - Mali</option>
+                <option value="124">124 - Malta</option>
+                <option value="125">125 - Man, Isle of</option>
+                <option value="126">126 - Marshall Islands</option>
+                <option value="127">127 - Martinique</option>
+                <option value="128">128 - Mauritania</option>
+                <option value="129">129 - Mauritius</option>
+                <option value="130">130 - Mexico</option>
+                <option value="132">132 - Moldova</option>
+                <option value="134">134 - Mongolia</option>
+                <option value="136">136 - Morocco</option>
+                <option value="137">137 - Mozambique</option>
+                <option value="138">138 - Myanmar</option>
+                <option value="139">139 - Namibia</option>
+                <option value="141">141 - Nepal</option>
+                <option value="142">142 - Netherlands</option>
+                <option value="143">143 - New Caledonia</option>
+                <option value="144">144 - New Zealand</option>
+                <option value="145">145 - Nicaragua</option>
+                <option value="146">146 - Niger</option>
+                <option value="147">147 - Nigeria</option>
+                <option value="149">149 - North Korea</option>
+                <option value="151">151 - Norway</option>
+                <option value="152">152 - Oman</option>
+                <option value="153">153 - Pakistan</option>
+                <option value="155">155 - West Bank and Gaza Strip</option>
+                <option value="156">156 - Panama</option>
+                <option value="157">157 - Papua New Guinea</option>
+                <option value="158">158 - Paraguay</option>
+                <option value="159">159 - Peru</option>
+                <option value="160">160 - Philippines</option>
+                <option value="161">161 - Poland</option>
+                <option value="162">162 - Portugal</option>
+                <option value="163">163 - Puerto Rico</option>
+                <option value="164">164 - Qatar</option>
+                <option value="166">166 - Romania</option>
+                <option value="167">167 - Russia</option>
+                <option value="168">168 - Rwanda</option>
+                <option value="169">169 - Saba (Netherlands Antilles)</option>
+                <option value="173">173 - Saudi Arabia</option>
+                <option value="174">174 - Senegal</option>
+                <option value="175">175 - Serbia-Montenegro</option>
+                <option value="176">176 - Seychelles</option>
+                <option value="177">177 - Sierra Leone</option>
+                <option value="178">178 - Singapore</option>
+                <option value="179">179 - Slovak Republic</option>
+                <option value="180">180 - Slovenia</option>
+                <option value="181">181 - Solomon Islands</option>
+                <option value="182">182 - Somalia</option>
+                <option value="183">183 - South Africa</option>
+                <option value="184">184 - South Korea</option>
+                <option value="185">185 - Spain</option>
+                <option value="186">186 - Sri Lanka</option>
+                <option value="189">189 - St. Kitts and Nevis</option>
+                <option value="190">190 - St. Lucia</option>
+                <option value="192">192 - St. Martin</option>
+                <option value="195">195 - Sudan</option>
+                <option value="196">196 - Suriname</option>
+                <option value="197">197 - Swaziland</option>
+                <option value="198">198 - Sweden</option>
+                <option value="199">199 - Switzerland</option>
+                <option value="200">200 - Syria</option>
+                <option value="201">201 - Taiwan</option>
+                <option value="202">202 - Tajikistan</option>
+                <option value="203">203 - Tanzania</option>
+                <option value="204">204 - Togo</option>
+                <option value="205">205 - Thailand</option>
+                <option value="206">206 - Tonga</option>
+                <option value="207">207 - Trinidad and Tobago</option>
+                <option value="208">208 - Tunisia</option>
+                <option value="209">209 - Turkey</option>
+                <option value="210">210 - Turkmenistan</option>
+                <option value="212">212 - Tuvalu*</option>
+                <option value="213">213 - Uganda</option>
+                <option value="214">214 - Ukraine</option>
+                <option value="215">215 - United Arab Emirates</option>
+                <option value="216">216 - Great Britain</option>
+                <option value="217">217 - United States</option>
+                <option value="218">218 - Uruguay</option>
+                <option value="219">219 - Uzbekistan</option>
+                <option value="220">220 - Vanuatu</option>
+                <option value="221">221 - Vatican City</option>
+                <option value="222">222 - Venezuela</option>
+                <option value="223">223 - Vietnam</option>
+                <option value="225">225 - Virgin Islands (U.S.)</option>
+                <option value="226">226 - Wallis and Futuna</option>
+                <option value="228">228 - Yemen</option>
+                <option value="229">229 - Democratic Republic of the Congo</option>
+                <option value="230">230 - Zambia</option>
+                <option value="231">231 - Zimbabwe</option>
+                <option value="233">233 - Northern Ireland*</option>
+                <option value="235">235 - Yugoslavia</option>
+                <option value="236">236 - Czechoslovakia</option>
+                <option value="238">238 - Corsica</option>
+                <option value="334">334 - Asian</option>
+                <option value="347">347 - East Timor</option>
+                <option value="349">349 - Western Sahara</option>
+                <option value="351">351 - Commonwealth of Independent States*</option>
+                <option value="359">359 - Soviet Union</option>
+                <option value="362">362 - West Germany (FRG)</option>
+                <option value="377">377 - North Yemen</option>
+                <option value="403">403 - Rhodesia</option>
+                <option value="406">406 - South Yemen</option>
+                <option value="422">422 - International</option>
+                <option value="428">428 - South Vietnam</option>
+                <option value="499">499 - East Germany (GDR)</option>
+                <option value="520">520 - Sinhalese*</option>
+                <option value="532">532 - New Hebrides</option>
+                <option value="603">603 - United Kingdom</option>
+                <option value="604">604 - Zaire</option>
+                <option value="605">605 - People's Republic of the Congo</option>
+                <option value="999">999 - Multinational</option>
+                <option value="1001">1001 - Serbia</option>
+                <option value="1002">1002 - Montenegro</option>
+                <option value="1003">1003 - Kosovo</option>
+                <option value="1004">1004 - South Sudan</option>
+              </select>
+            </div>
+          
+          
+            <div class="input-field col s6">
+              <label for="weaptype1"><b>Weapon Type</b></label>
+              <br>
+              <p>
+              </p>
+              <select id="weaptype1" name="weaptype1" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">1 - Biological</option>
+                <option value="2">2 - Chemical</option>
+                <option value="3">3 - Radiological</option>
+                <option value="4">4 - Nuclear</option>
+                <option value="5">5 - Firearms</option>
+                <option value="6">6 - Explosives</option>
+                <option value="7">7 - Fake Weapons</option>
+                <option value="8">8 - Incendiary</option>
+                <option value="9">9 - Melee</option>
+                <option value="10">10 - Vehicle</option>
+                <option value="11">11 - Sabotage Equipment</option>
+                <option value="12">12 - Other</option>
+                <option value="13">13 - Unknown</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+              <label for="gname_Taliban"><b>Group Name <span class="blur-text">Taliban</span></b></label>
+              <br>
+              <p>
+              <br>1 = "Yes" There is doubt as to whether the incident is done by <span class="blur-text">Taliban</span>.
+              <br>0 = "No" There is essentially no doubt as to whether the incident is done by <span class="blur-text">Taliban</span>.
+              </p>
+
+              <select id="gname_Taliban" name="gname_Taliban" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+              </select>
+            </div>
+            
+            <div class="input-field col s6">
+              <label for="gname_Unknown"><b>Group Name Unknown</b></label>
+              <br>
+              <p>
+                
+                <br>1 = "Yes" There is doubt as to whether the incident is done by an unknown group.
+                <br>0 = "No" There is essentially no doubt as to whether the incident is done by unknown group.
+              </p>
+              <select id="gname_Unknown" name="gname_Unknown" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="0">0 - No</option>
+                <option value="1">1 - Yes</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row center">
+
+            <button class="btn-large waves-effect waves-light orange" id="predictBtn">Predict Target</button>
+        </div>
+        </form>
+      </div>
+   
+      <div style="display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);" id="popup">
+
+        <div style="background-color: orange;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 10px;
+        text-align: center;">
+            <span style="color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+          
+        " id="closeBtn">&times;</span>
+            <h3>Prediction Result</h3>
+            <p id="predictionText">Prediction result will be shown here.</p>
+        </div>
+    </div> 
+
+    </div>
+  </div>
+
+  <footer class="page-footer orange">
+    <div class="container">
+       <!--
+      <br>
+      {{pred}}
+      <br> -->
+    </div> 
+    <div class="footer-bottom" style="text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.3);">
+      <p>&copy; 2024, All rights reserved.</p>
+  </div>
+  </footer>
+
+</script>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../static/js/materialize.js"></script>
+  <script src="../static/js/init.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var popup = document.getElementById("popup");
+    var predictBtn = document.getElementById("predictBtn");
+    var closeBtn = document.getElementById("closeBtn");
+
+    // Show the popup
+    predictBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        // Get the form data
+        var formData = new FormData(document.getElementById("predictionForm"));
+
+        // Fetch prediction result from the server
+        fetch('/predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update the popup content with the prediction result
+            document.getElementById("predictionText").innerText = data.prediction;
+            popup.style.display = "block";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    // Close the popup
+    closeBtn.addEventListener("click", function() {
+        popup.style.display = "none";
+        predictionForm.reset(); 
+    });
+
+    // Close the popup when clicking outside of it
+    window.addEventListener("click", function(event) {
+        if (event.target == popup) {
+            popup.style.display = "none";
+            predictionForm.reset(); 
+        }
+    });
+});
+
+
+
+  </script>
+ 
+</script>
+</body>
+</html>

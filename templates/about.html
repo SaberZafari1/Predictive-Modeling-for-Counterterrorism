@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About the Project</title>
+    <link rel="stylesheet" href="../static/css/abou.css">
+    <link rel="stylesheet" href="../static/css/footer_style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+           <!--  <a href="#" class="brand-logo"> <img src="../static/images/log1.png" alt="Roshnayi"></a> -->
+            <ul class="nav-links">
+                <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('services')}}">Prediction</a></li>
+                    <li><a href="#">Visualization</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <section class="about-section">
+            <h2>Project Idea</h2>
+            <p><strong>Predictive Modeling for Counterterrorism:</strong> Machine Learning Algorithms for Anticipating Targets and Perpetrators of terrorist attack.</p>
+            <p>This project focuses on developing a machine learning model to predict potential terrorist attack targets and predict the groups behind these attacks. By utilizing historical data on terrorist incidents alongside socio-economic factors, geopolitical dynamics, and other pertinent variables, the project aims to construct predictive models capable of offering actionable insights for counterterrorism efforts. Moreover, the project aims to visualize regions vulnerable to future attacks, aiding in the augmentation of proactive measures to mitigate security threats.</p>
+        </section>
+        
+        <section class="about-section">
+            <h2>Relevance to Sustainable Development Goals (SDGs)</h2>
+            <p>This project directly aligns with Sustainable Development Goal (SDG) 16: Peace, Justice, and Strong Institutions. By developing a machine learning model to predict potential terrorist attack targets and identify the groups behind these attacks, the project aims to enhance peace and security. Anticipating and preventing terrorist attacks can help reduce violence, instability, and conflict, ultimately contributing to a more peaceful environment.</p>
+        </section>
+
+
+        <section class="about-section">
+            <h2>Data Describtion</h2>
+            <p>In this project, the Global Terrorism Database is used. The Global Terrorism Database (GTD) is an open-source database including information on terrorist events around the world from 1970 through  june, 2021.</p>
+        </section>
+
+        <section class="about-section">
+            <h2>Approach</h2>
+            <p>Support Vector Machines (SVM), Decision Trees, k-Nearest Neighbors (KNN), and Deep Neural Networks (DNN) are the algorithms suitable for this project according to the nature of the data. The Predictions are all based on Decision Tree which which had the highest accurracy for this dataset compare to the other algorithms.</p>
+        </section>
+    </div>
+    <footer class="footer" style="padding: 10px 0;">
+        <div class="footer-bottom">
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+   </footer>
+</body>
+</html>

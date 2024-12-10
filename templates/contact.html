@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../static/css/contact1.css">
+    <link rel="stylesheet" href="../static/css/footer_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                  <!--  <a href="#" class="brand-logo"> <img src="../static/images/log1.png" alt="Roshnayi"></a> -->
+                <ul class="nav-links">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('services')}}">Prediction</a></li>
+                    <li><a href="#">Visualization</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+    </header>
+
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <p>If you have any questions, feel free to reach out to us using the form below.</p>
+        
+        <form action="/submit_form" method="POST">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+            
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer" style="padding-top: 10px; padding-bottom: 30px;
+   ">
+        <div class="footer-bottom">
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+   </footer>
+    <script src="#"></script> <!-- Link to your JS file -->
+</body>
+</html>

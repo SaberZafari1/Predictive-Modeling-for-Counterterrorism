@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/footer_style.css">
+    <link rel="stylesheet" href="../static/css/abou.css">
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .white-text {
+      color: white;
+    }
+    .grey-text.text-lighten-4 {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                  <!--  <a href="#" class="brand-logo"> <img src="../static/images/log1.png" alt="Roshnayi"></a> -->
+                <ul class="nav-links">
+                    <li><a href="{{url_for('home')}}">Home</a></li>
+                    <li><a href="{{url_for('services')}}">Prediction</a></li>
+                    <li><a href="#">Visualization</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to </h1>
+            <p>Predicting Terrorist Attack's Targets</p>
+            <a href="{{url_for('about')}}" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h2>Prediction</h2>
+            <p>This project focuses on developing a machine learning model to predict potential terrorist attack targets and predict the groups behind these attacks.</p>
+        </div>
+        <div class="feature">
+            <h2>Visualization</h2>
+            <p>This project aims to visualize regions vulnerable to future attacks, aiding in the augmentation of proactive measures to mitigate security threats.</p>
+        </div>
+        <div class="feature">
+            <h2>Relevance to SDGs</h2>
+            <p>This project directly aligns with Sustainable Development Goal (SDG) 16. Peace, Justice, and Strong Institutions. </p>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About </h2>
+        <p> This is a predictive Modeling for Counterterrorism focusing on applying machine learning algorithms for anticipating targets and perpetrators of terrorist attacks.</p>
+        <a href="{{url_for('about')}}" class="btn">Read More</a>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>project</h4>
+                    <ul>
+                        <li><a href="{{url_for('about')}}">overview</a></li>
+                        <li><a href="{{url_for('services')}}">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+              
+                <div class="footer-col">
+                    <h4>connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/saber-zafari/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:saberzafari3@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/SaberZafari1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024, All rights reserved.</p>
+        </div>
+   </footer>
+ 
+    <!-- Include any necessary JavaScript files -->
+</body>
+</html>
